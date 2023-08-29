@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>Cadastro de Produto</h1>
+  <form [formGroup]="cadastroForm">
+    <mat-form-field>
+      <input matInput type="text" placeholder="Nome do Produto" formControlName="nomeProduto">
+      <mat-error *ngIf="cadastroForm.get('nomeProduto')!.hasError('required') && cadastroForm.get('nomeProduto')!.touched">Campo obrigatório</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type="number" placeholder="Preço" formControlName="preco">
+      <mat-error *ngIf="cadastroForm.get('preco')!.hasError('required') && cadastroForm.get('preco')!.touched">Campo obrigatório</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput placeholder="Descrição do Produto" formControlName="descricao"></textarea>
+      <mat-error *ngIf="cadastroForm.get('descricao')!.hasError('required') && cadastroForm.get('descricao')!.touched">Campo obrigatório</mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="cadastrarProduto()">Cadastrar</button>
+    <span *ngIf="produtoCadastrado" class="success-message">Produto cadastrado com sucesso!</span>
+  </form>
+</div>
